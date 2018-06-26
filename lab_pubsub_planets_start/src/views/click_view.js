@@ -8,14 +8,13 @@ ClickView.prototype.bindEvents = function () {
   console.log("bindEvents");
   const callback = function (event)
   {
-    console.log(event.target);
-
+    const planet = event.target.id;
+    PubSub.publish('ClickView:ClickPlanet', planet);
   } ;
 
   for (let element of this.elements){
     element.addEventListener('click', callback);
 
-    console.log(element);
   }
 };
 
